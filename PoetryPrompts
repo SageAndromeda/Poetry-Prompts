@@ -1,0 +1,91 @@
+// Poetry Prompts
+// Sage Hardiman
+// 10/29/2023
+// Randomly generates a list of prompts to help inspire poems
+// Inspired by https://wewritepoems.wordpress.com/2010/07/01/thursday-prompt-9-line-by-line/
+
+
+#include <iostream>
+#include <vector>
+#include <string>
+#include <utility>
+#include <algorithm>
+#include <cstdlib> 
+
+using std::cout; using std::cin; using std::endl;
+using std::vector;
+using std::string;
+using std::pair; using std::make_pair;
+using std::transform;
+
+
+int main()
+{
+    srand(time(nullptr));
+
+    // Preloaded prompts:
+    vector<string> preloadedPrompts;
+    preloadedPrompts.push_back("A feeling");
+    preloadedPrompts.push_back("Observe the scenery of your immediate surroundings");
+    preloadedPrompts.push_back("Personification of an inanimate object");
+    preloadedPrompts.push_back("Use a metaphor");
+    preloadedPrompts.push_back("Recall a prominent memory");
+    preloadedPrompts.push_back("Use symbolism in a statement");
+    preloadedPrompts.push_back("Associate some form of weather with a feeling described elsewhere in your poem");
+    preloadedPrompts.push_back("Tell a lie, about anything");
+    preloadedPrompts.push_back("Make a reference to a holiday or season");
+    preloadedPrompts.push_back("State a fact about a favorite artist or poet");
+    preloadedPrompts.push_back("Compare yourself to a specific piece from a favorite artist/poet");
+    preloadedPrompts.push_back("Negate a lie");
+    preloadedPrompts.push_back("Describe a daydream or parts of a dream you've had");
+    preloadedPrompts.push_back("Refer to a vacationing location");
+
+    vector <pair<string, bool>> promptList;
+
+    // Add pairs of preloaded prompts and bools to promptList
+    for (int i = 0; i < preloadedPrompts.size(); ++i) {
+        promptList.push_back(make_pair(preloadedPrompts[i], false));
+    }
+
+    // Let user add prompts:
+    string uPrompts = "";
+    while (uPrompts != "DONE") {
+        std::cout << "Insert a prompt you would like to add, or type \"done\". " << endl;
+        getline(cin, uPrompts);
+        
+        // Check for "DONE"
+        transform(uPrompts.begin(), uPrompts.end(), uPrompts.begin(), ::toupper);
+        if (uPrompts != "DONE") {
+            promptList.push_back(make_pair(uPrompts, false));
+        }
+    }
+
+    // How many prompts to print?
+    int numPrompts = 0;
+    do {
+        cout << "How many lines would you like to write? (Cannot be greater than "
+            << promptList.size() << ")\n";
+
+        cin >> numPrompts;
+    } while (numPrompts > promptList.size());
+
+    cout << endl << "Here are your prompts: " << endl;
+
+    // Ranlomly print unique prompts:
+    int numPrinted = 0;
+    do {
+        int aPrompt = rand() % (promptList.size());
+
+        // If the prompt hasn't been printed already, print it. 
+        if ((promptList[aPrompt].second) == false) {
+            promptList[aPrompt].second = true;
+            cout << (numPrinted + 1) << ". " << promptList[aPrompt].first << endl;
+            ++numPrinted;
+        }
+
+        //cout << (numPrinted + 1) << 
+    } while (numPrinted < numPrompts);
+
+}
+
+
