@@ -23,29 +23,59 @@ int main()
 {
     srand(time(nullptr));
 
-    // Preloaded prompts:
-    vector<string> preloadedPrompts;
-    preloadedPrompts.push_back("A feeling");
-    preloadedPrompts.push_back("Observe the scenery of your immediate surroundings");
-    preloadedPrompts.push_back("Personification of an inanimate object");
-    preloadedPrompts.push_back("Use a metaphor");
-    preloadedPrompts.push_back("Recall a prominent memory");
-    preloadedPrompts.push_back("Use symbolism in a statement");
-    preloadedPrompts.push_back("Associate some form of weather with a feeling described elsewhere in your poem");
-    preloadedPrompts.push_back("Tell a lie, about anything");
-    preloadedPrompts.push_back("Make a reference to a holiday or season");
-    preloadedPrompts.push_back("State a fact about a favorite artist or poet");
-    preloadedPrompts.push_back("Compare yourself to a specific piece from a favorite artist/poet");
-    preloadedPrompts.push_back("Negate a lie");
-    preloadedPrompts.push_back("Describe a daydream or parts of a dream you've had");
-    preloadedPrompts.push_back("Refer to a vacationing location");
-
     vector <pair<string, bool>> promptList;
 
-    // Add pairs of preloaded prompts and bools to promptList
-    for (int i = 0; i < preloadedPrompts.size(); ++i) {
-        promptList.push_back(make_pair(preloadedPrompts[i], false));
-    }
+    // Preloaded prompts:
+    promptList.push_back(make_pair("A feeling", false));
+    promptList.push_back(make_pair("Observe the scenery of your immediate surroundings", false));
+    promptList.push_back(make_pair("Personification of an inanimate object", false));
+    promptList.push_back(make_pair("Use a metaphor", false));
+    promptList.push_back(make_pair("Recall a prominent memory", false));
+    promptList.push_back(make_pair("Use symbolism in a statement", false));
+    promptList.push_back(make_pair("Associate some form of weather with a feeling described elsewhere in your poem", false));
+    promptList.push_back(make_pair("Tell a lie, about anything", false));
+    promptList.push_back(make_pair("Make a reference to a holiday or season", false));
+    promptList.push_back(make_pair("State a fact about a favorite artist or poet", false));
+    promptList.push_back(make_pair("Compare yourself to a specific piece from a favorite artist/poet", false));
+    promptList.push_back(make_pair("Negate a lie", false));
+    promptList.push_back(make_pair("Describe a daydream or parts of a dream you've had", false));
+    promptList.push_back(make_pair("Refer to a vacationing location", false));
+    promptList.push_back(make_pair("Describe your gender abstractly", false));
+    promptList.push_back(make_pair("Complete the phrase \"_____ is stronger than \"_____\"", false));
+    promptList.push_back(make_pair("Write about summer", false));
+    promptList.push_back(make_pair("Make up something about someone near you", false));
+    promptList.push_back(make_pair("Only use words that start with a letter from your first name", false));
+    promptList.push_back(make_pair("Think of a random word. Now use that as the first word in this line", false));
+    promptList.push_back(make_pair("Write about a sport", false));
+    promptList.push_back(make_pair("State a fact about a favorite character", false));
+    promptList.push_back(make_pair("Ask someone for a random word to use", false));
+    promptList.push_back(make_pair("Only use words starting with letters from your last name", false));
+    promptList.push_back(make_pair("Choose a random noun to use", false));
+    promptList.push_back(make_pair("Choose a random adjective to use", false));
+    promptList.push_back(make_pair("Choose a random verb to use", false));
+    promptList.push_back(make_pair("Choose a random number to use", false));
+    promptList.push_back(make_pair("Choose a random adverb to use", false));
+    promptList.push_back(make_pair("Choose a random pronoun to use", false));
+    promptList.push_back(make_pair("Turn on the radio and write about what's playing", false));
+    promptList.push_back(make_pair("Mention a day of the week", false));
+    promptList.push_back(make_pair("Mention an animal", false));
+    promptList.push_back(make_pair("Write about someone you haven't talked to in a long time", false));
+    promptList.push_back(make_pair("Use an idiom", false));
+    promptList.push_back(make_pair("Write about a random, unimportant moment from your life", false));
+    promptList.push_back(make_pair("Use a line from your favorite song", false));
+    promptList.push_back(make_pair("Use alliteration", false));
+    promptList.push_back(make_pair("Use a simile", false));
+    promptList.push_back(make_pair("Use an onomatopoeia", false));
+    promptList.push_back(make_pair("Use a rhyme", false));
+    promptList.push_back(make_pair("Use two similes", false));
+    promptList.push_back(make_pair("Use a simile and a metaphor", false));
+    promptList.push_back(make_pair("Write a different line of the poem in reverse", false));
+    promptList.push_back(make_pair("Use your least favorite color", false));
+    promptList.push_back(make_pair("Use repitition", false));
+    promptList.push_back(make_pair("Describe something you can't currently see", false));
+    promptList.push_back(make_pair("Describe a song as if it was an image", false));
+    promptList.push_back(make_pair("Repeat a different line, but change one word", false));
+    promptList.push_back(make_pair("Personify your favorite food", false));
 
     // Let user add prompts:
     string uPrompts = "";
