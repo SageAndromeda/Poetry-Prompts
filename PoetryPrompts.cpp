@@ -4,7 +4,7 @@
 // Randomly generates a list of prompts to help inspire poems
 // Inspired by https://wewritepoems.wordpress.com/2010/07/01/thursday-prompt-9-line-by-line/
 
-
+// Includes
 #include <iostream>
 #include <vector>
 #include <string>
@@ -26,6 +26,7 @@ int main()
     vector <pair<string, bool>> promptList;
 
     // Preloaded prompts:
+    // Kept in vectors with string, bool pairs to prevent repetition
     promptList.push_back(make_pair("A feeling", false));
     promptList.push_back(make_pair("Observe the scenery of your immediate surroundings", false));
     promptList.push_back(make_pair("Personification of an inanimate object", false));
@@ -55,13 +56,13 @@ int main()
     promptList.push_back(make_pair("Choose a random verb to use", false));
     promptList.push_back(make_pair("Choose a random number to use", false));
     promptList.push_back(make_pair("Choose a random adverb to use", false));
-    promptList.push_back(make_pair("Choose a random pronoun to use", false));
+    promptList.push_back(make_pair("Use a pronoun", false));
     promptList.push_back(make_pair("Turn on the radio and write about what's playing", false));
     promptList.push_back(make_pair("Mention a day of the week", false));
     promptList.push_back(make_pair("Mention an animal", false));
     promptList.push_back(make_pair("Write about someone you haven't talked to in a long time", false));
     promptList.push_back(make_pair("Use an idiom", false));
-    promptList.push_back(make_pair("Write about a random, unimportant moment from your life", false));
+    promptList.push_back(make_pair("Write about a mundane moment", false));
     promptList.push_back(make_pair("Use a line from your favorite song", false));
     promptList.push_back(make_pair("Use alliteration", false));
     promptList.push_back(make_pair("Use a simile", false));
@@ -73,16 +74,16 @@ int main()
     promptList.push_back(make_pair("Use your least favorite color", false));
     promptList.push_back(make_pair("Use repitition", false));
     promptList.push_back(make_pair("Describe something you can't currently see", false));
-    promptList.push_back(make_pair("Describe a song as if it was an image", false));
-    promptList.push_back(make_pair("Repeat a different line, but change one word", false));
+    promptList.push_back(make_pair("Use a hyperbole", false));
+    promptList.push_back(make_pair("Repeat a different line in your poem, but change one or two words", false));
     promptList.push_back(make_pair("Personify your favorite food", false));
 
-    // Let user add prompts:
+    // Let user input prompts:
     string uPrompts = "";
     while (uPrompts != "DONE") {
         std::cout << "Insert a prompt you would like to add, or type \"done\". " << endl;
         getline(cin, uPrompts);
-        
+
         // Check for "DONE"
         transform(uPrompts.begin(), uPrompts.end(), uPrompts.begin(), ::toupper);
         if (uPrompts != "DONE") {
@@ -90,32 +91,36 @@ int main()
         }
     }
 
-    // How many prompts to print?
+    // Ask how many prompts they would like to print
+    // It cannot be bigger than the total number of prompts or less than 1
     int numPrompts = 0;
     do {
         cout << "How many lines would you like to write? (Cannot be greater than "
             << promptList.size() << ")\n";
 
         cin >> numPrompts;
-    } while (numPrompts > promptList.size());
+
+        // Tell user that they put in an invalid amount
+        if ((numPrompts > promptList.size()) || (numPrompts < 1))
+            cout << "Invalid amount. " << endl;
+
+    } while ((numPrompts > promptList.size()) || (numPrompts < 1));
 
     cout << endl << "Here are your prompts: " << endl;
 
-    // Ranlomly print unique prompts:
+    // Randomly print unique prompts:
     int numPrinted = 0;
     do {
         int aPrompt = rand() % (promptList.size());
 
-        // If the prompt hasn't been printed already, print it. 
+        // If the prompt hasn't been printed already, print it and increment amount printed 
         if ((promptList[aPrompt].second) == false) {
             promptList[aPrompt].second = true;
             cout << (numPrinted + 1) << ". " << promptList[aPrompt].first << endl;
             ++numPrinted;
         }
 
-        //cout << (numPrinted + 1) << 
     } while (numPrinted < numPrompts);
 
 }
-
 
