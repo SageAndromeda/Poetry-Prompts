@@ -2,7 +2,8 @@
 // Sage Hardiman
 // 1/21/2024
 // Randomly generates a list of prompts to help inspire poems
-// Inspired by https://wewritepoems.wordpress.com/2010/07/01/thursday-prompt-9-line-by-line/
+// Inspired by "Thursday Prompt #9: Line by Line" by Mallery
+    // https://wewritepoems.wordpress.com/2010/07/01/thursday-prompt-9-line-by-line/
 
 // Includes
 #include <iostream>
@@ -28,20 +29,20 @@ int main()
     // Preloaded prompts:
     // Kept in vectors with string, bool pairs to prevent repetition
     // It may have been better to store these in a .txt file and read from there
-    promptList.push_back(make_pair("A feeling", false));
-    promptList.push_back(make_pair("Observe the scenery of your immediate surroundings", false));
-    promptList.push_back(make_pair("Personification of an inanimate object", false));
+    promptList.push_back(make_pair("Use two metaphors", false));
     promptList.push_back(make_pair("Use a metaphor", false));
-    promptList.push_back(make_pair("Recall a prominent memory", false));
-    promptList.push_back(make_pair("Use symbolism in a statement", false));
-    promptList.push_back(make_pair("Associate some form of weather with a feeling described elsewhere in your poem", false));
-    promptList.push_back(make_pair("Tell a lie, about anything", false));
-    promptList.push_back(make_pair("Make a reference to a holiday or season", false));
-    promptList.push_back(make_pair("State a fact about a favorite artist or poet", false));
-    promptList.push_back(make_pair("Compare yourself to a specific piece from a favorite artist/poet", false));
-    promptList.push_back(make_pair("Negate a lie", false));
-    promptList.push_back(make_pair("Describe a daydream or parts of a dream you've had", false));
-    promptList.push_back(make_pair("Refer to a vacationing location", false));
+    promptList.push_back(make_pair("Write about your favorite item", false));
+    promptList.push_back(make_pair("Write the first fun fact that comes to mind", false));
+    promptList.push_back(make_pair("Lie", false));
+    promptList.push_back(make_pair("Write about a time spent with a friend", false));
+    promptList.push_back(make_pair("Tell the truth. About anything", false));
+    promptList.push_back(make_pair("Mention a work of art and/or an artist", false));
+    promptList.push_back(make_pair("Mention an author", false));
+    promptList.push_back(make_pair("Write about someone you consider \"family\". They don't necessarily have to be related to you", false));
+    promptList.push_back(make_pair("Write four lines where the last word of each rhymes", false));
+    promptList.push_back(make_pair("Use a gerund (typically a noun ending in \"ing\"", false));
+    promptList.push_back(make_pair("Use the subject line of a recent email", false));
+    promptList.push_back(make_pair("Use personification", false));
     promptList.push_back(make_pair("Describe your gender abstractly", false));
     promptList.push_back(make_pair("Complete the phrase \"_____ is stronger than \"_____\"", false));
     promptList.push_back(make_pair("Write about summer", false));
@@ -100,7 +101,7 @@ int main()
         cout << "How many lines would you like to write? (Cannot be greater than "
             << promptList.size() << ")\n";
         cin >> numPrompts;
-        
+
         // Check that they put in a number:
         while (cin.fail()) {
             cout << "Invalid input. Please enter a number in digits" << endl;
