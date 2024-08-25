@@ -38,9 +38,9 @@ int main()
     promptList.push_back(make_pair("Tell the truth. About anything", false));
     promptList.push_back(make_pair("Mention a work of art and/or an artist", false));
     promptList.push_back(make_pair("Mention an author", false));
-    promptList.push_back(make_pair("Write about someone you consider \"family\". They don't necessarily have to be related to you", false));
+    promptList.push_back(make_pair("Write about someone you consider \"family.\" They don't necessarily have to be related to you", false));
     promptList.push_back(make_pair("Write four lines where the last word of each rhymes", false));
-    promptList.push_back(make_pair("Use a gerund (typically a noun ending in \"ing\"", false));
+    promptList.push_back(make_pair("Use a gerund", false));
     promptList.push_back(make_pair("Use the subject line of a recent email", false));
     promptList.push_back(make_pair("Use personification", false));
     promptList.push_back(make_pair("Describe your gender abstractly", false));
