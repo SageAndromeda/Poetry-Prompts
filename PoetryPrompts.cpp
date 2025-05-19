@@ -47,7 +47,7 @@ int main()
     promptList.push_back(make_pair("Complete the phrase \"_____ is stronger than \"_____\"", false));
     promptList.push_back(make_pair("Write about summer", false));
     promptList.push_back(make_pair("Make up something about someone near you", false));
-    promptList.push_back(make_pair("Only use words that start with a letter from your first name", false));
+    promptList.push_back(make_pair("Only use words that start with letters in your first name", false));
     promptList.push_back(make_pair("Think of a random word. Now use that as the first word in this line", false));
     promptList.push_back(make_pair("Write about a sport", false));
     promptList.push_back(make_pair("State a fact about a favorite character", false));
