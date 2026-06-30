@@ -29,8 +29,18 @@ int main()
     // Vectors hold a list of stuff such as strings (words/sentences)
     vector <pair<string, int>> promptList;
 
+    ///////////////////////////////////////////////////////////////////////////////
+    // Testing!!! Please remove later!
+    // pair <vector<int>, char> testPair;
+    // vector<int> testVector = {2,3};
+    // testPair = make_pair(testVector, 'a');
+    ///////////////////////////////////////////////////////////////////////////////
+
     // Preloaded prompts:
     // Kept in vectors with string, int pairs to prevent repetition
+    // Consider keeping these in a function to allow easier repetition of program
+    // Pairs with 0 are default and used as is
+    // Pairs with 1 are user prompts and get exra weight
     promptList.push_back(make_pair("Use two metaphors", 0));
     promptList.push_back(make_pair("Use a metaphor", 0));
     promptList.push_back(make_pair("Write about your favorite item", 0));
@@ -87,6 +97,7 @@ int main()
 
     // Let user input prompts:
     string uPrompts = "";
+    int userPromptCheck = 1;
     while (uPrompts != "DONE") {
         cout << "Insert a prompt you would like to add, or type \"done\". " << endl;
         getline(cin, uPrompts);
@@ -94,23 +105,34 @@ int main()
         // Check for "DONE"
         transform(uPrompts.begin(), uPrompts.end(), uPrompts.begin(), ::toupper);
         if (uPrompts != "DONE") {
-            promptList.push_back(make_pair(uPrompts, 0));
+            promptList.push_back(make_pair(uPrompts, userPromptCheck));
         }
     }
 
     // If they added their own, ask if they'd only like those ones.
     if(promptList.size() > numPrompts) {
-        cout << "Would you like to use built in prompts (yes/no)?" << endl;
-        uPrompts = "";
-        getline(cin, uPrompts);
+        bool useDefaultLoop = false;
+        do { 
+            cout << "Would you like to use built in prompts (yes/no)?" << endl;
+            uPrompts = "";
+            getline(cin, uPrompts);
 
-        transform(uPrompts.begin(), uPrompts.end(), uPrompts.begin(), ::toupper);
+            transform(uPrompts.begin(), uPrompts.end(), uPrompts.begin(), ::toupper);
 
-        // Check that they input yes/no
-        if (uPrompts == "N" || uPrompts == "NO") {
-            // Delete user input prompts:
-            promptList.erase(promptList.begin(), promptList.begin()+numPrompts);
-        }
+            // Check that they input yes/no
+            if (uPrompts == "N" || uPrompts == "NO") {
+                // Delete default prompts:
+                promptList.erase(promptList.begin(), promptList.begin()+numPrompts);
+                useDefaultLoop = true;
+            }
+            else if(!(uPrompts == "Y" || uPrompts == "YES")){
+                cout << "Invalid input. Please enter \"yes\" or \"no\"." << endl;
+            }
+            else {
+                useDefaultLoop = true;
+            }
+        } while(!useDefaultLoop);
+        
     }
 
     // Ask how many prompts they would like to print
@@ -145,6 +167,11 @@ int main()
     int numPrinted = 0;
     do {
         int aPrompt = rand() % (promptList.size());
+
+        // Weight user prompts heavier by rerolling if default prompt
+        if(userPromptCheck != promptList[aPrompt].second) {
+            int aPrompt = rand() % (promptList.size());
+        }
 
         cout << (numPrinted + 1) << ". " << promptList[aPrompt].first << endl;
         promptList.erase(promptList.begin() + aPrompt);
